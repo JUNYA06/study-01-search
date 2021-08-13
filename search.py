@@ -18,9 +18,12 @@ def export_list_csv(export_list,csv_path):
 
 
 def import_list_csv(list,csv_path):
-    with open(csv_path,'w') as f:
+    with open(csv_path,'r') as f:
+        print(csv_path)
         reader = csv.reader(f)
-        list = [row for row in reader]
+        for row in reader:
+            list.append(row)
+            print(list)
     return list   
 
 ### 検索ツール
@@ -35,6 +38,7 @@ def search():
         print("{}が見つかりした".format(word))
     else:
         source.append(word)
+        print(source)
     export_list_csv(source,r"list.csv")
 
 if __name__ == "__main__":
