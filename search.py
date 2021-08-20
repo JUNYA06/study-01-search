@@ -12,11 +12,13 @@
 # csvを出力する処理
 
 import csv
-csv_path = 'C:/Users/user/python/study-01-search/test.csv'
+#顧客に納品するには相対パスで記述
+csv_path = 'study-01-search/test.csv'
 
 
 # 検索ソース
-source=["ねずこ","たんじろう","きょうじゅろう","ぎゆう","げんや","かなお","ぜんいつ"]
+#下記は削除する。キャラクター定義はしない。
+source=[]
 
 def export_list_csv(list,csv_path):
     with open(csv_path, 'w', newline='', encoding="utf_8") as file:
@@ -24,7 +26,8 @@ def export_list_csv(list,csv_path):
         writer.writerows(list)
 
 def import_list_csv(list,csv_path):
-    with open(csv_path,'r', encoding="utf_8") as f:
+    # encoding="utf-8_sig"でないと文字化け
+    with open(csv_path,'r', encoding="utf_8_sig") as f:
         reader = csv.reader(f, lineterminator='\n')
         
         for row in reader:
